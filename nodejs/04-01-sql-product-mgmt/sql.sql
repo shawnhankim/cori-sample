@@ -1,6 +1,8 @@
 /*
  * Create database and table of goods 
  *
+ *   $ mysql.server start
+ *   
  *   $ mysql -u root 
  *
  *   MariaDB [(none)]> CREATE DATABASE sample_db;
