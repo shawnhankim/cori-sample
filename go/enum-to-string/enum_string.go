@@ -37,4 +37,6 @@ func (st SampleState) String() string {
 func main() {
 	fmt.Printf("Enum Value  : %d\n", State01)
 	fmt.Printf("Enum String : %s\n", State01)
+	fmt.Printf("Enum Value  : %d\n", State03)
+	fmt.Printf("Enum String : %s\n", State03)
 }
