@@ -20,14 +20,28 @@ Note:
 1 <= len(start) = len(end) <= 10000.
 Both start and end will only consist of characters in {'L', 'R', 'X'}.
 
-43 / 78 test cases passed
-
 */
 
 
 class Solution {
 public:
+
+    // passed all of test cases
     bool canTransform(string s, string e) {
+        int n = s.size(), i = 0, j = 0;
+        
+        while (i < n && j < n) {
+            while(i < n && s[i] == 'X') ++i;
+            while(j < n && e[j] == 'X') ++j;
+            if (s[i] != e[j]) return false;
+            if ((s[i] == 'L' && i < j) || (s[i] == 'R' && i > j)) return false;
+            ++i; ++j;
+        }
+        return true;
+    }
+
+    // 43 / 78 test cases passed
+    bool canTransform1(string s, string e) {
         int n = s.size();
         int sx = 0, sr = 0, sl = 0;
         int ex = 0, er = 0, el = 0;
