@@ -20,13 +20,57 @@ Regex
 const (
 	uiRegexStr = `^\/ui\/.*`
 	dnRegex    = `/downloads/*`
+	uxRegexStr = `^\/api\/sample\/[0-9a-z]+\/ux`
+	//uxRegexStr = `^\/api\/sample\/[0-9a-z]+\/ux\/?.*`
+	//uxRegexStr = `/api/sample/v1alpha1/ux`
+	//uxRegexStr = `^\/api\/sample\/v1alpha1\/ux\/?.*`
 )
 
 var (
 	regexList = make(map[string]*regexp.Regexp)
 )
 
-func main() {
+func sampleRegexMatching() {
+	uxReg, uxErr := regexp.Compile(uxRegexStr)
+	if uxErr != nil {
+		fmt.Printf("Unable to compile a temporary regex\n")
+	}
+
+	fmt.Printf("\n1. Test Case : %s \n", uxRegexStr)
+	tmpURL := "/ux/user"
+	if uxReg.Match([]byte(tmpURL)) {
+		fmt.Printf("Mached   'ux' pattern in regex : %s\n", tmpURL)
+	} else {
+		fmt.Printf("Unmached 'ux' pattern in regex : %s\n", tmpURL)
+	}
+
+	fmt.Printf("\n2. Test Case : %s \n", uxRegexStr)
+	tmpURL1 := "/api/sample/v1alpha1/ux/user"
+	if uxReg.Match([]byte(tmpURL1)) {
+		fmt.Printf("Mached   'ux' pattern in regex : %s\n", tmpURL1)
+	} else {
+		fmt.Printf("Unmached 'ux' pattern in regex : %s\n", tmpURL1)
+	}
+
+	fmt.Printf("\n3. Test Case : %s \n", uxRegexStr)
+	tmpURL2 := "/api/sample/v1alpha1/ux"
+	if uxReg.Match([]byte(tmpURL2)) {
+		fmt.Printf("Mached   'ux' pattern in regex : %s\n", tmpURL2)
+	} else {
+		fmt.Printf("Unmached 'ux' pattern in regex : %s\n", tmpURL2)
+	}
+
+	fmt.Printf("\n4. Test Case : %s \n", uxRegexStr)
+	tmpURL3 := "/api/sample/v1alpha2/ux/"
+	if uxReg.Match([]byte(tmpURL3)) {
+		fmt.Printf("Mached   'ux' pattern in regex : %s\n", tmpURL3)
+	} else {
+		fmt.Printf("Unmached 'ux' pattern in regex : %s\n", tmpURL3)
+	}
+
+}
+
+func sampleRegexMapping() {
 	var uiErr, dnErr error
 	regexList[uiRegexStr], uiErr = regexp.Compile(uiRegexStr)
 	if uiErr != nil {
@@ -86,4 +130,8 @@ func main() {
 	} else {
 		fmt.Printf("Match()       : Unmached 'downloads' pattern in regex : %s\n", tmpDownload1)
 	}
+}
+
+func main() {
+	sampleRegexMatching()
 }
