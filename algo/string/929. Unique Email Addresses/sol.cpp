@@ -37,7 +37,32 @@ Each emails[i] contains exactly one '@' character.
 class Solution {
 public:
     int numUniqueEmails(vector<string>& emails) {
+        set<string> eSet;
+        int         res = 0;
         
+        for (auto email : emails) {
+            bool   isId = true, isDomain = false, isSkip = false;
+            string sId, sDomain, sAddress;
+            for (auto c : email) {
+                switch (c) {
+                    case '@': isId = false; isDomain = true; isSkip = false; continue;
+                    case '.': if (!isDomain) continue; break;
+                    case '+': isSkip = true; continue;
+                }
+                if (isSkip  ) continue;
+                if (isId    ) sId += c;
+                if (isDomain) sDomain += c;
+            }
+            sAddress = sId + "@" + sDomain;
+            cout << sAddress << endl;
+            auto search = eSet.find(sAddress);
+            if (search != eSet.end())
+                continue;
+            ++res;
+            eSet.insert(sAddress);
+        }
+        return res;
     }
 };
+
 
