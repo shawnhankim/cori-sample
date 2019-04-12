@@ -90,7 +90,9 @@ yE+vPxsiUkvQHdO2fojCkY8jg70jxM+gu59tPDNbw3Uh/2Ij310FgTHsnGQMyA==
 	}
 
 	if _, err := cert.Verify(opts); err != nil {
-		panic("failed to verify certificate: " + err.Error())
+		//panic("failed to verify certificate: " + err.Error())
+		msg := fmt.Sprintf("failed to verify certificate: %+v", err)
+		panic(msg)
 	}
 }
 
@@ -134,6 +136,6 @@ AIU+2GKjyT3iMuzZxxFxPFMCAwEAAQ==
 }
 
 func main() {
-    ExampleCertificate_Verify()
+	//ExampleCertificate_Verify()
+	ExampleParsePKIXPublicKey()
 }
-
