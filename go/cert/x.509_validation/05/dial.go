@@ -45,7 +45,8 @@ yuGnBXj8ytqU0CwIPX4WecigUCAkVDNx
 	}
 
 	conn, err := tls.Dial("tcp", "mail.google.com:443", &tls.Config{
-		RootCAs: roots,
+		//RootCAs:    roots,
+		ServerName: "mail.google.com1",
 		//InsecureSkipVerify: true,
 		InsecureSkipVerify: false,
 	})
