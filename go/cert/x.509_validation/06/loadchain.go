@@ -233,27 +233,29 @@ func main() {
 
 	tr := http.Transport{TLSClientConfig: &conf}
 	client := &http.Client{Transport: &tr}
-	_, err := client.Get("https://github.com/")
+	resp, err := client.Get("https://github.com/")
 	if err != nil {
 		fmt.Println(err)
 	}
 	fmt.Println("Verified Root CAs for github.com")
 
-	// for _, cert := range resp.TLS.PeerCertificates {
-	// 	fmt.Printf("Peer certificate \"%v\", ISSUED BY \"%v\"\n", cert.Subject.CommonName, cert.Issuer.CommonName)
-	// 	fmt.Printf("Peer certificate in detail : %+v\n", cert)
-	// }
+	for _, cert := range resp.TLS.PeerCertificates {
+		fmt.Printf("Github Peer certificate \"%v\", ISSUED BY \"%v\"\n", cert.Subject.CommonName, cert.Issuer.CommonName)
+		//fmt.Printf("Peer certificate in detail : %+v\n", cert)
+		fmt.Printf("  - NotBefore : %+v\n", cert.NotBefore)
+		fmt.Printf("  - NotAfter  : %+v\n", cert.NotAfter)
+	}
 
-	_, err = client.Get("https://facebook.com/")
+	resp, err = client.Get("https://facebook.com/")
 	if err != nil {
 		fmt.Println(err)
 	}
 	fmt.Println("Verified Root CAs for facebook.com")
 
-	_, err = client.Post("https://product-s-stg.apis.f5networks.net/ee/v1/digitalassets/4c6735b8-7749-4df2-b863-5276cfdc9ea7/entitlements")
-	if err != nil {
-		fmt.Println(err)
-	} else {
-		fmt.Println("Verified Root CAs for F5 Networks")
+	for _, cert := range resp.TLS.PeerCertificates {
+		fmt.Printf("Github Peer certificate \"%v\", ISSUED BY \"%v\"\n", cert.Subject.CommonName, cert.Issuer.CommonName)
+		//fmt.Printf("Peer certificate in detail : %+v\n", cert)
+		fmt.Printf("  - NotBefore : %+v\n", cert.NotBefore)
+		fmt.Printf("  - NotAfter  : %+v\n", cert.NotAfter)
 	}
 }
