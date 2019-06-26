@@ -6,8 +6,8 @@
 ```
 - Upon completion, the compiler outputs two files:sample_go_lib.h, a C header file and sample_go_lib.so, the shared object file, shown below:
 ```bash
-   -rw-r--r--  1 hankim  OLYMPUS\Domain Users     1708 Jun 20 13:12 sample_go_lib.h
-   -rw-r--r--  1 hankim  OLYMPUS\Domain Users  2552808 Jun 20 13:12 sample_go_lib.so   
+   -rw-r--r--  1 shawnkim   Users     1708 Jun 20 13:12 sample_go_lib.h
+   -rw-r--r--  1 shawnkim   Users  2552808 Jun 20 13:12 sample_go_lib.so   
 ```
 - Implement the Python code to call Golang functions (i.e. sample_call_go.py)
 - Run the Python code:
