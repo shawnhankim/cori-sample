@@ -1,0 +1,20 @@
+  {
+    "id": 1000,
+    "type": "BigBox",
+    "name": "Mall of America",
+    "address": "340 W Market",
+    "address2": "",
+    "city": "Bloomington",
+    "state": "MN",
+    "zip": "55425",
+    "location": {
+      "lat": 44.85466,
+      "lon": -93.24565
+    },
+    "hours": "Mon: 10-9:30; Tue: 10-9:30; Wed: 10-9:30; Thurs: 10-9:30; Fri: 10-9:30; Sat: 10-9:30; Sun: 11-7",
+    "services": [
+      "Geek Squad Services",
+      "Best Buy Mobile",
+      "Best Buy For Business"
+    ]
+  }
