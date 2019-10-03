@@ -1,0 +1,5 @@
+
+version: 2.5
+service
+  test:
+  image: "sample image"
