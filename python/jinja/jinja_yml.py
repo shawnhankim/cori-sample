@@ -6,7 +6,11 @@ services:
   real: {{is_test}}
   image: {{image_name}}
 {% if is_test != True %}
-etc.: real
+kind: real
+desc: {{description}}
+{% else %}
+kind: test
+desc: {{description}}
 {% endif %}
 """
 
@@ -15,11 +19,11 @@ def generate_yml(file_name, yml_data):
   f.write(yml_data)
   f.close()
 
-test_yml = jinja2.Template(YML_TEMPLATE).render(image_name="test image", is_test=True)
+test_yml = jinja2.Template(YML_TEMPLATE).render(image_name="test image", is_test=True, description="this is the test")
 print(test_yml)
 #generate_yml(file_name="test.yml", yml_data=test_yml)
 
-real_yml = jinja2.Template(YML_TEMPLATE).render(image_name="real image", is_test=False)
+real_yml = jinja2.Template(YML_TEMPLATE).render(image_name="real image", is_test=False, description="this is the real")
 print("\n%s" % real_yml)
 #generate_yml(file_name="real.yml", yml_data=real_yml)
 
