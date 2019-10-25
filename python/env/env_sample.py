@@ -17,3 +17,8 @@ if d(True):
     print("4. x == True : True")
 else:
     print("4. x != True : False")
+
+e = os.environ.get("CTL_SAMPLE_ENV4", "false").lower() == "true"
+print("5. CTL_SAMPLE_ENV4 : %r" % e)
+
+
