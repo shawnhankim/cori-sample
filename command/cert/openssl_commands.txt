@@ -1,0 +1,19 @@
+
+https://scaleup.us/2017/09/10/create-self-signed-tls-certificates-pkcs8-key-x509-cert-graylog-gelf/
+Create self-signed TLS certificates – PKCS8 key and x509 cert
+
+#Generate new key and create a self signed certificate:
+openssl req -x509 -nodes -days 365 -newkey rsa:4096 -keyout selfsigned.key.pem -out selfsigned-x509.crt -subj "/C=US/ST=WA/L=Seattle/CN=example.com/emailAddress=someEmail@gmail.com"
+
+Output:
+
+selfsigned.key.pem  –  PEM Key
+selfsigned-x509.crt –  x509 Certificate
+
+
+#Convert PEM key to PKCS8 format:
+openssl pkcs8 -topk8 -inform PEM -outform PEM -in selfsigned.key.pem -out selfsigned-pkcs8.pem
+Ouptut:
+
+selfsigned-pkcs8.pem – PKCS formatted key
+
