@@ -32,6 +32,19 @@ print(f"abc : {abc}")
 print(f"base : {abc.path}")
 
 
+abc = urlsplit('http://abc.com').path
+if abc:
+    print(abc)
+else:
+    print(False)
+
+abc = urlsplit('http://abc.com/').path
+print(abc)
+
+abc = urlsplit('http://abc.com//').path
+print(abc)
+
+
 # You now have *in addition* to the above:
 # advanced_split_url.username   "foo"
 # advanced_split_url.password   "bar"
