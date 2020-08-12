@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cori Deer</title>
+<style>
+div {width: 100px; height: 150px;
+  background-image: url('images/cori_deer.png');
+  animation: 
+    gangham     4s steps(43, start) infinite,
+    movearound 12s steps(69, end  ) infinite alternate 44ms;
+  animation-direction: normal, alternate;
+}
+@keyframes gangham {
+    0% {background-position: 0 0}
+  100% {background-position: -5175px 0}
+}
+@keyframes movearound {
+    0% {transform: translatex(0)}
+  100% {transform: translatex(600px);}
+}
+</style>
+<script>
+  window.console = window.console || function(t) {};
+</script>
+<script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+</head>
+<body translate="no">
+<div></div>
+</body>
+</html>
